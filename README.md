@@ -29,6 +29,25 @@ You don't always need all three. Use what fits:
 - Complex problem, unclear requirements? Start with `/brainstorm`.
 - Plan looks good but feels risky? Jump to `/probe`.
 
+## How is this different from extended thinking / plan mode?
+
+Claude Code already has built-in thinking capabilities. These skills fill a different gap:
+
+| | When | Who's thinking | What happens |
+|---|---|---|---|
+| **Extended thinking** | Any time | Claude alone (internal) | Claude reasons harder before responding. Deeper single-turn output, but still one perspective. |
+| **Plan mode** | You know what to build | Claude alone | Claude explores the codebase and proposes implementation steps. Assumes the *what* is decided. |
+| **`/brainstorm`** | You don't know what to build yet | You + Claude in dialogue | Claude asks questions, challenges assumptions, surfaces options you hadn't considered. |
+| **`/weigh`** | You have options but haven't chosen | Claude evaluating your criteria | Generates 3+ strategies, scores each on tradeoffs, prunes the weakest, recommends a winner. |
+| **`/probe`** | You've chosen but haven't committed | Claude as adversary | Attacks your plan with pre-mortems, red-teaming, and falsification. Finds failure modes before production does. |
+
+The key difference: **these skills are collaborative and structured.** Extended thinking is Claude thinking harder alone. Plan mode is Claude planning alone. `/brainstorm` forces a *conversation* — Claude can't just generate an answer, it has to ask questions and let you steer. That surfaces things Claude wouldn't find on its own, because you bring domain knowledge that isn't in the codebase.
+
+They also compose naturally with Claude's built-in features:
+- Use `/brainstorm` to decide what to build → then enter **plan mode** to figure out how
+- Use `/weigh` to pick a strategy → then use **extended thinking** for the complex implementation details
+- Use `/probe` to stress-test a design → then **build** with confidence
+
 ## Installation
 
 Copy the skill directories into your Claude Code skills directory:
