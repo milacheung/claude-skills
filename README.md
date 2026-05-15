@@ -1,33 +1,54 @@
-# Claude Code Skills
+# Claude Code Thinking Skills
 
-A curated collection of analytical thinking skills for [Claude Code](https://claude.com/claude-code).
+A set of Claude Code skills for structured decision-making. Use them independently or as a workflow: **brainstorm** → **weigh** → **probe**.
 
-## Skills
+These are **thinking tools** — they don't write or edit code. They work for technical and non-technical decisions alike: architecture choices, API design, migration strategies, product planning, or any problem with tradeoffs.
 
-### brainstorm
-Explore ideas using Socratic dialogue. Asks probing questions, challenges assumptions, and surfaces tradeoffs before converging to a solution. Use when you need to think through a problem before committing to a direction.
+## The Skills
 
-**Usage:** `/brainstorm`
+| Skill | Purpose | When to use |
+|-------|---------|-------------|
+| `/brainstorm` | Explore a problem space through Socratic dialogue | Before committing to an approach |
+| `/weigh` | Generate and evaluate multiple strategies with tradeoff analysis | When choosing between options |
+| `/probe` | Adversarial stress-testing of plans and decisions | Before implementing — find failure modes first |
 
-### the-fool
-Structured critical reasoning with 5 modes: Socratic questioning, dialectic synthesis, pre-mortem analysis, red teaming, and evidence audit. Use when you need to stress-test a plan, decision, or architecture.
+## The Workflow
 
-**Usage:** `/the-fool`
+```
+/brainstorm  →  Diverge. Explore the problem, challenge assumptions, surface options.
+     ↓
+/weigh       →  Evaluate. Score strategies against criteria, prune the weakest, recommend.
+     ↓
+/probe       →  Stress-test. Attack assumptions, run pre-mortems, find what breaks.
+     ↓
+Build        →  Implement with confidence. The plan survived scrutiny.
+```
 
-**Author:** [Jeffallan](https://github.com/Jeffallan) | License: MIT
+You don't always need all three. Use what fits:
+- Quick decision? `/weigh` alone.
+- Complex problem, unclear requirements? Start with `/brainstorm`.
+- Plan looks good but feels risky? Jump to `/probe`.
 
 ## Installation
 
-Copy the skill directories into your Claude Code config:
+Copy the skill directories into your Claude Code skills directory:
 
 ```bash
-# brainstorm (goes in commands/)
-cp brainstorm/SKILL.md ~/.claude/commands/brainstorm.md
+# Global (available in all projects)
+cp -r brainstorm ~/.claude/skills/
+cp -r weigh ~/.claude/skills/
+cp -r probe ~/.claude/skills/
 
-# the-fool (goes in skills/)
-cp -r the-fool ~/.claude/skills/the-fool
+# Or project-level (available in one project)
+cp -r brainstorm .claude/skills/
+cp -r weigh .claude/skills/
+cp -r probe .claude/skills/
 ```
 
-## Notes
+## Customization
 
-These skills are **thinking tools** — they don't write or edit code. They work for technical and non-technical decisions alike: business strategy, product planning, architecture choices, career decisions, etc.
+These skills are designed to be forked and adapted:
+
+- **`/probe`** — Add domain-specific focus areas. A trading team might add "market hours sensitivity" and "order integrity." A payments team might add "idempotency" and "currency precision." The generic version covers the universals (data integrity, race conditions, partial failure).
+- **`/weigh`** — Adjust evaluation criteria for your domain. The defaults (blast radius, backward compatibility, operational complexity) work for most backend systems. Swap or extend as needed.
+- **`/brainstorm`** — Add or swap exploration lenses. The included five are general-purpose, but you might add "Regulatory" for fintech or "Accessibility" for frontend work.
