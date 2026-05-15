@@ -132,20 +132,20 @@ Claude:  [thinks deeply about column order, partial indexes,
 
 Each tool did what it's good at. The skills handled the **what** and **why**. Plan mode and extended thinking handled the **how**.
 
+## Variants
+
+- `brainstorm.md` — Full version with structured exploration lenses (Constraints, Inversion, Stakeholders, Prior Art, Scale)
+- `brainstorm-socratic.md` — Lighter version, pure Socratic dialogue without lenses
+
 ## Installation
 
-Copy the skill directories into your Claude Code skills directory:
+Copy the skill files into your Claude Code commands directory:
 
 ```bash
 # Global (available in all projects)
-cp -r brainstorm ~/.claude/skills/
-cp -r weigh ~/.claude/skills/
-cp -r probe ~/.claude/skills/
-
-# Or project-level (available in one project)
-cp -r brainstorm .claude/skills/
-cp -r weigh .claude/skills/
-cp -r probe .claude/skills/
+cp brainstorm.md ~/.claude/commands/brainstorm.md
+cp weigh.md ~/.claude/commands/weigh.md
+cp probe.md ~/.claude/commands/probe.md
 ```
 
 ## Customization
