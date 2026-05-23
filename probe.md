@@ -76,3 +76,5 @@ When stress-testing system changes, prioritize:
 
 After stress-testing, if the plan survives, proceed with implementation planning.
 If significant issues were found, re-evaluate alternatives.
+
+After presenting the output, check `~/.claude/html-output.md` for whether to offer an interactive HTML page.

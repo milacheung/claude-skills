@@ -57,3 +57,5 @@ Summarize the exploration:
 - Recommended direction (with reasoning)
 
 Suggest next steps (e.g., `/weigh` for evaluating options, `/probe` for stress-testing, or proceed with implementation planning).
+
+After presenting the convergence summary, check `~/.claude/html-output.md` for whether to offer an interactive HTML page.

@@ -106,3 +106,5 @@ Each evaluated on blast radius (does retry block the pipeline?), data integrity 
 ## Transition
 
 After completing analysis, suggest `/probe` to stress-test the recommended strategy before committing. For low-risk changes, proceed directly to implementation.
+
+After presenting the output, check `~/.claude/html-output.md` for whether to offer an interactive HTML page.
