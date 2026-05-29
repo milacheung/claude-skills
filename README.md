@@ -1,6 +1,6 @@
 # Claude Code Thinking Skills
 
-A set of Claude Code skills for structured decision-making. Use them independently or as a workflow: **brainstorm** → **weigh** → **probe**.
+A set of Claude Code skills for structured decision-making. Use them independently, as a manual workflow, or let `/decide` or `/deliberate` orchestrate the full pipeline.
 
 These are **thinking tools** — they don't write or edit code. They work for technical and non-technical decisions alike: architecture choices, API design, migration strategies, product planning, or any problem with tradeoffs.
 
@@ -11,6 +11,8 @@ These are **thinking tools** — they don't write or edit code. They work for te
 | `/brainstorm` | Explore a problem space through Socratic dialogue | Before committing to an approach |
 | `/weigh` | Generate and evaluate multiple strategies with tradeoff analysis | When choosing between options |
 | `/probe` | Adversarial stress-testing of plans and decisions | Before implementing — find failure modes first |
+| `/decide` | Orchestrates brainstorm → weigh → probe with isolated agents | Internal decisions where you already have the context |
+| `/deliberate` | Adds discovery and fact-checking before the pipeline | Cross-team or cross-system decisions where context is incomplete |
 
 ## The Workflow
 
@@ -28,6 +30,22 @@ You don't always need all three. Use what fits:
 - Quick decision? `/weigh` alone.
 - Complex problem, unclear requirements? Start with `/brainstorm`.
 - Plan looks good but feels risky? Jump to `/probe`.
+
+## Which skill for which situation
+
+| Situation | Skill |
+|-----------|-------|
+| Don't know what I'm deciding yet | `/brainstorm` |
+| Have options, need to pick one | `/weigh` |
+| Have a plan, want to find failure modes | `/probe` |
+| Have full context, want the full pipeline | `/decide` |
+| Missing context — cross-team or external system | `/deliberate` |
+
+**`/decide` vs chaining manually:**
+`/decide` runs probe cold — the probe agents see only the recommendation, not the brainstorm reasoning that produced it. This prevents the probe from anchoring on reasoning it already read. The tradeoff: less control over each phase than running them by hand.
+
+**`/decide` vs `/deliberate`:**
+The deciding factor is whether you already have the context. Changes to a service you own → `/decide`. Anything that crosses team or system boundaries, touches behavior you can't verify from the codebase, or where ADRs or existing patterns might exist → `/deliberate`. Deliberate adds a discovery phase (docs, web, codebase) and a human gate before brainstorm begins.
 
 ## How is this different from extended thinking / plan mode?
 
@@ -146,6 +164,8 @@ Copy the skill files into your Claude Code commands directory:
 cp brainstorm.md ~/.claude/commands/brainstorm.md
 cp weigh.md ~/.claude/commands/weigh.md
 cp probe.md ~/.claude/commands/probe.md
+cp decide.md ~/.claude/commands/decide.md
+cp deliberate.md ~/.claude/commands/deliberate.md
 ```
 
 ## Customization
